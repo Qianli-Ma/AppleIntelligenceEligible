@@ -1,8 +1,10 @@
 ## <div align="center"><b><a href="README.md">English</a> | <a href="README_CN.md">简体中文</a></b></div>
 
-# Ways to enjoy Xcode LLM on ChinaSKU Mac
+# Ways to enjoy Apple Intelligence on ChinaSKU Mac
 
-Ways to enjoy Xcode LLM on ChinaSKU Mac without disabling SIP.
+Ways to enjoy Apple Intelligence on ChinaSKU Mac without disabling SIP.
+
+This is a fork of [Kyle-Ye/XcodeLLMEligible](https://github.com/Kyle-Ye/XcodeLLMEligible) with Apple Intelligence enabled.
 
 For older methods which requires SIP disabled, please see "Related links" section.
 
@@ -20,7 +22,7 @@ The author of this project is not responsible for any consequences that may aris
 
 > [!NOTE]
 > Tested the script under macOS 15 Beta 1 ~ Beta 3
-> 
+> Apple Intelligence works on MacOS 15.1 Beta 1
 > Should work on macOS 15.x release as long as Apple does not remove or change the override feature of eligibility service.
 
 ### Script Execution
@@ -28,13 +30,13 @@ The author of this project is not responsible for any consequences that may aris
 #### Install
 
 ```shell
-curl -L https://raw.githubusercontent.com/Kyle-Ye/XcodeLLMEligible/main/override_xcodellm.sh | bash
+curl -L https://raw.githubusercontent.com/Qianli-Ma/AppleIntelligenceEligible/main/override_AI.sh | bash
 ```
 
 #### Uninstall
 
 ```shell
-curl -L https://raw.githubusercontent.com/Kyle-Ye/XcodeLLMEligible/main/override_xcodellm.sh | bash -s -- uninstall
+curl -L https://raw.githubusercontent.com/Qianli-Ma/AppleIntelligenceEligible/main/override_AI.sh | bash -s -- uninstall
 ```
 
 ### Manual Execution
@@ -46,8 +48,9 @@ Need one time SIP disable during the script.
 1. Disable SIP in recovery mode with `csrutil disable`
 2. Add boot argument by `sudo nvram boot-args="amfi_get_out_of_my_way=1"` and reboot
 3. Download `eligibility_util` from the [release page](https://github.com/Kyle-Ye/XcodeLLMEligible/releases) and execute `./eligibility_util forceDomainAnswer --domain-name OS_ELIGIBILITY_DOMAIN_XCODE_LLM --answer 4`
-4. Enable SIP in recovery mode with `csrutil enable` and reboot.
-5. Remove boot argument by `sudo nvram -d boot-args`
+4. Execute `./eligibility_util forceDomainAnswer --domain-name OS_ELIGIBILITY_DOMAIN_GREYMATTER --answer 4`
+5. Enable SIP in recovery mode with `csrutil enable` and reboot.
+6. Remove boot argument by `sudo nvram -d boot-args`
 
 > Read [Disabling and Enabling System Integrity Protection](https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection) if you are unfamiliar with SIP operation.
 >
@@ -69,6 +72,9 @@ No SIP disabled needed in total.
 3. Move the downloaded file to `eligibilityd`'s daemon container's `Data/Library/Caches/NeverRestore/` folder. If you are not sure which one is for `eligibilityd`, you can try it one by one or just add the file to all of the containers.
 
 ## Related links
+
+- https://github.com/Kyle-Ye/eligibility/
+- https://github.com/Kyle-Ye/XcodeLLMEligible
 
 - https://gist.github.com/Kyle-Ye/4ad1aa92df3a31bd812487af65e16947
 - https://gist.github.com/unixzii/6f25be1842399022e16ad6477a304286

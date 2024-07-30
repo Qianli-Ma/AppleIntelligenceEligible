@@ -53,6 +53,7 @@ method_override() {
     chmod +x "$UTIL_SIP_FILE"
     echo "Checking the status..."
     "$UTIL_SIP_FILE" getDomainAnswer --domain-name OS_ELIGIBILITY_DOMAIN_XCODE_LLM
+    "$UTIL_SIP_FILE" getDomainAnswer --domain-name OS_ELIGIBILITY_DOMAIN_GREYMATTER
     echo ""
   else
     echo "You do not have the permission to read Daemon Container folder."
